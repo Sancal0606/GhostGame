@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dwdggkgoetq5r"]
+
+[ext_resource type="Shader" path="res://Shaders/toon_shader.gdshader" id="1_lvsfv"]
+[ext_resource type="Texture2D" uid="uid://cc0kfsu0jn3ax" path="res://Assets/Textures/soldier_text.png" id="2_im0ip"]
+
+[sub_resource type="Gradient" id="Gradient_srtu6"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.175)
+colors = PackedColorArray(0.122252, 0.122252, 0.122252, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vevs6"]
+gradient = SubResource("Gradient_srtu6")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lvsfv")
+shader_parameter/albedo = Color(0.986752, 0.986752, 0.986752, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/texture_albedo = ExtResource("2_im0ip")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_vevs6")

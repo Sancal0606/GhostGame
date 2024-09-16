@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://o0gwcglad4fu"]
+
+[ext_resource type="Shader" path="res://Shaders/toon_shader.gdshader" id="1_uira4"]
+[ext_resource type="Texture2D" uid="uid://cn1tpy0cwqric" path="res://Assets/Textures/soldirer_sniper.png" id="2_plxig"]
+
+[sub_resource type="Gradient" id="Gradient_veh7f"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.164286)
+colors = PackedColorArray(0.172833, 0.172833, 0.172833, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hdxxl"]
+gradient = SubResource("Gradient_veh7f")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uira4")
+shader_parameter/albedo = Color(0.817521, 0.817521, 0.817521, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/texture_albedo = ExtResource("2_plxig")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_hdxxl")

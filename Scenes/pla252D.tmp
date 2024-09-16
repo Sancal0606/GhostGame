@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://lxmjpl5w53r6"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_d5iwi"]
+[ext_resource type="PackedScene" uid="uid://dxqxxtdlqkkv7" path="res://Models/test_monkey.tscn" id="2_k64hk"]
+[ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="3_mysqe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0i0dd"]
+size = Vector3(4, 5.431, 4)
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613146, 0.0223563, -0.0303135)
+collision_mask = 6
+script = ExtResource("1_d5iwi")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015728, 2.38419e-07, 0.079071)
+
+[node name="test_monkey" parent="Pivot" instance=ExtResource("2_k64hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015728, 2.07336, -0.26489)
+shape = SubResource("BoxShape3D_0i0dd")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.50455, 0)
+size = Vector3(4, 16.77, 4)
+texture_albedo = ExtResource("3_mysqe")
+modulate = Color(0, 0, 0, 1)
+
+[node name="Damage_Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Damage_Timer" to="." method="_on_damage_timer_timeout"]

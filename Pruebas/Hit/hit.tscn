@@ -1,0 +1,170 @@
+[gd_scene load_steps=20 format=3 uid="uid://bk0xdsupdvx78"]
+
+[ext_resource type="Shader" uid="uid://bedbohi6dpcht" path="res://Pruebas/Hit/hit.tres" id="1_reqh4"]
+[ext_resource type="Texture2D" uid="uid://b51pnm75quy7y" path="res://Pruebas/Hit/T_flare81.png" id="2_6ax7n"]
+[ext_resource type="Shader" uid="uid://cjpei6v6p4cki" path="res://Pruebas/Hit/spark.tres" id="3_nujul"]
+[ext_resource type="Texture2D" uid="uid://bcbn50undhbqf" path="res://Pruebas/Hit/T_circle42.PNG" id="4_araib"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mylu4"]
+render_priority = 0
+shader = ExtResource("1_reqh4")
+shader_parameter/Texture2DParameter = ExtResource("2_6ax7n")
+
+[sub_resource type="Curve" id="Curve_pw72c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.519651, 1), 0.0, 0.0, 0, 0, Vector2(0.973799, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kciit"]
+curve = SubResource("Curve_pw72c")
+
+[sub_resource type="Gradient" id="Gradient_gwh5x"]
+colors = PackedColorArray(8, 0.8, 0, 1, 1, 0.5, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aujk8"]
+gradient = SubResource("Gradient_gwh5x")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3e8de"]
+angle_min = -180.0
+angle_max = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_aujk8")
+alpha_curve = SubResource("CurveTexture_kciit")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bkoqm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72k1j"]
+render_priority = 0
+shader = ExtResource("3_nujul")
+shader_parameter/Hit_text = ExtResource("4_araib")
+
+[sub_resource type="Curve" id="Curve_t6e4d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vccw4"]
+curve = SubResource("Curve_t6e4d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1x6ar"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+color = Color(2.5, 2, 0.5, 1)
+alpha_curve = SubResource("CurveTexture_vccw4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qm51g"]
+size = Vector2(0.05, 0.3)
+
+[sub_resource type="Animation" id="Animation_kk07q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit_effect:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sparks:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_48x5q"]
+resource_name = "default"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit_effect:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sparks:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5lihc"]
+_data = {
+"RESET": SubResource("Animation_kk07q"),
+"default": SubResource("Animation_48x5q")
+}
+
+[node name="Hit" type="Node3D"]
+
+[node name="Hit_effect" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_mylu4")
+emitting = false
+amount = 1
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+process_material = SubResource("ParticleProcessMaterial_3e8de")
+draw_pass_1 = SubResource("QuadMesh_bkoqm")
+
+[node name="Sparks" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_72k1j")
+emitting = false
+amount = 12
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1x6ar")
+draw_pass_1 = SubResource("QuadMesh_qm51g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5lihc")
+}
+autoplay = "default"
+speed_scale = 1.5
+
+[connection signal="finished" from="Hit_effect" to="." method="_on_hit_effect_finished"]

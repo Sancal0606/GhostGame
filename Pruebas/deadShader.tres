@@ -1,0 +1,44 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://c05c4bcjd71gm"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_4swj3"]
+parameter_name = "Texture2DParameter"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_hew68"]
+source = 5
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_nxb8b"]
+parameter_name = "FloatParameter"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D Texture2DParameter;
+uniform float FloatParameter;
+
+
+
+void fragment() {
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(Texture2DParameter, UV);
+
+
+// FloatParameter:4
+	float n_out4p0 = FloatParameter;
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+	ALPHA = n_out4p0;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_4swj3")
+nodes/fragment/2/position = Vector2(-340, 40)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_hew68")
+nodes/fragment/3/position = Vector2(40, 40)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_nxb8b")
+nodes/fragment/4/position = Vector2(20, 280)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 3, 0, 0, 0, 4, 0, 0, 1)

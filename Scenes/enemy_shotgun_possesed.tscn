@@ -1,0 +1,123 @@
+[gd_scene load_steps=15 format=3 uid="uid://bpjy41a4ivlto"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_shotgun_possesed.gd" id="1_kt8rw"]
+[ext_resource type="PackedScene" uid="uid://314byjv3jur5" path="res://Scenes/bulletPlayer.tscn" id="2_jvnpv"]
+[ext_resource type="PackedScene" uid="uid://uuldpiokturl" path="res://Models/test_soldier_shotgun_possessed.tscn" id="3_3tjug"]
+[ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="4_ie0up"]
+[ext_resource type="ArrayMesh" uid="uid://biqyesxminuwo" path="res://Pruebas/muzzle_flash.obj" id="4_xj645"]
+[ext_resource type="Shader" uid="uid://bnqwgryv7mvwa" path="res://Pruebas/Muzzle_flash.tres" id="5_6bmnd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akd24"]
+albedo_color = Color(0, 0.775975, 0.776354, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2m7xw"]
+material = SubResource("StandardMaterial3D_akd24")
+
+[sub_resource type="BoxMesh" id="BoxMesh_oh1dc"]
+
+[sub_resource type="Animation" id="Animation_k8wjg"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MuzzleFlash:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.25, 0.0, 0.6]
+}
+
+[sub_resource type="Animation" id="Animation_1lnew"]
+resource_name = "slash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MuzzleFlash:surface_material_override/0:shader_parameter/FloatParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.25, 0.0, 0.6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3bwn2"]
+_data = {
+"RESET": SubResource("Animation_k8wjg"),
+"slash": SubResource("Animation_1lnew")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3dnt"]
+render_priority = 0
+shader = ExtResource("5_6bmnd")
+shader_parameter/ColorParameter = Color(0.929993, 0.468393, 0, 1)
+shader_parameter/FloatParameter = -0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vgwi1"]
+size = Vector3(1.5, 2.03494, 1.5)
+
+[node name="EnemyPossese" type="CharacterBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+collision_mask = 6
+script = ExtResource("1_kt8rw")
+bullet = ExtResource("2_jvnpv")
+life = 3
+cooldown = 1.0
+damage_force = 20
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Possessed" parent="Pivot" instance=ExtResource("3_3tjug")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.239574, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06616, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_2m7xw")
+
+[node name="Eyes" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.344659, 0, 0, 0, 0.629166, 0, 1.30916, 0.37443)
+visible = false
+mesh = SubResource("BoxMesh_oh1dc")
+
+[node name="BulletPoint" type="Node3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0116357, 1.91267, 1.64212)
+
+[node name="Flash" type="Node3D" parent="Pivot"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.181035, 2.0775, 2.05999)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Flash"]
+libraries = {
+"": SubResource("AnimationLibrary_3bwn2")
+}
+speed_scale = 3.0
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="Pivot/Flash"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.421432, -0.29274, 1.19209e-07, 0.487322)
+mesh = ExtResource("4_xj645")
+surface_material_override/0 = SubResource("ShaderMaterial_i3dnt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25573, 0)
+shape = SubResource("BoxShape3D_vgwi1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Decal" type="Decal" parent="."]
+size = Vector3(1.6, 2, 1.6)
+texture_albedo = ExtResource("4_ie0up")
+modulate = Color(0, 0, 0, 0.47451)
+
+[node name="Damage_Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Damage_Timer" to="." method="_on_damage_timer_timeout"]

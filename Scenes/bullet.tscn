@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://betu6w6h8ifru"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_38gpi"]
+[ext_resource type="PackedScene" uid="uid://bk0xdsupdvx78" path="res://Pruebas/Hit/hit.tscn" id="2_nxfay"]
+[ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="2_rhg7d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwnaf"]
+size = Vector3(0.301567, 0.306885, 0.479134)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6uud"]
+albedo_color = Color(0.896992, 0, 0.0811278, 1)
+emission = Color(0.984314, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u3eyq"]
+material = SubResource("StandardMaterial3D_h6uud")
+radius = 0.15
+height = 0.5
+
+[node name="Bullet" type="Area3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+collision_mask = 5
+script = ExtResource("1_38gpi")
+hit = ExtResource("2_nxfay")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00349045, 0.0110999, 0.00172904)
+shape = SubResource("BoxShape3D_pwnaf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_u3eyq")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.832037, 0)
+size = Vector3(0.5, 1.73121, 0.5)
+texture_albedo = ExtResource("2_rhg7d")
+modulate = Color(0, 0, 0, 0.54902)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

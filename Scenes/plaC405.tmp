@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://lxmjpl5w53r6"]
+
+[ext_resource type="PackedScene" uid="uid://c5xn0vvrrhaxf" path="res://Scenes/monkey.tscn" id="1_8pybc"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_d5iwi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3885o"]
+radius = 1.67179
+height = 8.394
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h1pa"]
+albedo_color = Color(0, 0, 0, 0.376471)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sdhjq"]
+material = SubResource("StandardMaterial3D_0h1pa")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_d5iwi")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015728, 2.38419e-07, 0.079071)
+
+[node name="monkey" parent="Pivot" instance=ExtResource("1_8pybc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015728, 2.0034, 0.954562)
+shape = SubResource("CapsuleShape3D_3885o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.85399, 0, 0, 0, 0.128691, 0, 0, 0, 4.77762, 0, -1.68978, 0)
+mesh = SubResource("CylinderMesh_sdhjq")

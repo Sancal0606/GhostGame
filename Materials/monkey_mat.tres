@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b6rxxc54cta4"]
+
+[ext_resource type="Shader" path="res://Shaders/toon_shader.gdshader" id="1_gtop7"]
+[ext_resource type="Texture2D" uid="uid://bxdbioawrvfqi" path="res://Assets/Textures/monkey_text.png" id="2_jqgw3"]
+
+[sub_resource type="Gradient" id="Gradient_eu4f5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.228571)
+colors = PackedColorArray(0.0846899, 0.0846899, 0.0846899, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_26dx1"]
+gradient = SubResource("Gradient_eu4f5")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gtop7")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/texture_albedo = ExtResource("2_jqgw3")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_26dx1")
