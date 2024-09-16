@@ -258,7 +258,7 @@ size = 100.0
 near = 0.06
 
 [node name="Ball" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19203, 3.24771)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4.19203, 3.24771)
 mesh = SubResource("SphereMesh_3x1hn")
 
 [node name="Ball2" type="MeshInstance3D" parent="."]

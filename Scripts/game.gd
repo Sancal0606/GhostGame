@@ -13,13 +13,16 @@ var enemies = []
 var lookDirection = 2
 
 func _ready():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Engine.time_scale = 1.2
-
+	
 	create_enemy(Vector3(35,0,35),enemyShotgun_scene)
 	create_enemy(Vector3(40,0,0),enemyNormal_scene)
 	create_enemy(Vector3(-35,0,0),enemySniper_scene)
 
+func _process(delta):
+	if !$Player.ghost:
+		$Ball.position = lookDirection
 
 func _physics_process(delta):
 	#guarda la ubicacion del mouse en pixeles
