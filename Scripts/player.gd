@@ -29,17 +29,25 @@ var damageCount = 0.5
 
 var additional_forces = Vector3(0,0,0)
 @export var damage_force = 10
-
+@export var min_decal_size = 4.0
+@export var max_decal_size = 10.0
+var decal_size 
 func _ready():
 	currentLife = maxLife
 	tempLength = maxJump
 	ghost = true
 	damageCount = damageCooldown
+	decal_size = max_decal_size
 
 func _process(delta):
 	damageCount -= delta
+	
+	if velocity.y != 0:
+		decal_size -= velocity.y / abs(velocity.y) * 0.5
+	decal_size = clampf(decal_size,min_decal_size,max_decal_size)
+	
+	$Pivot/monkey_prueba/Decal.size = Vector3(decal_size,$Pivot/monkey_prueba/Decal.size.y,decal_size)
 	if velocity.length() > 0.1:
-		
 		$Pivot/monkey_prueba/AnimationTree["parameters/Movement/blend_amount"] \
 		= lerp($Pivot/monkey_prueba/AnimationTree["parameters/Movement/blend_amount"],1.0,delta * 10)
 	else:

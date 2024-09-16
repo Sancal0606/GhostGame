@@ -25,15 +25,15 @@ visible = false
 [node name="monkey_prueba" parent="Pivot" instance=ExtResource("3_m1iom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.32852)
 
-[node name="Decal" type="Decal" parent="Pivot/monkey_prueba"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015728, -7.26627, -0.258145)
-size = Vector3(4, 16.77, 4)
-texture_albedo = ExtResource("3_mysqe")
-modulate = Color(0, 0, 0, 1)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015728, 2.07336, -0.26489)
 shape = SubResource("BoxShape3D_0i0dd")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.70679, 0)
+size = Vector3(4, 16.77, 4)
+texture_albedo = ExtResource("3_mysqe")
+modulate = Color(0, 0, 0, 1)
 
 [node name="Damage_Timer" type="Timer" parent="."]
 wait_time = 0.1

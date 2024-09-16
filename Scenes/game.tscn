@@ -58,7 +58,9 @@ enemyShotgun_scene = ExtResource("3_76vqf")
 enemySniper_scene = ExtResource("4_6gl8x")
 
 [node name="Player" parent="." instance=ExtResource("1_et54k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613146, 0.82236, -11.0475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613146, 5.89667, -11.0475)
+min_decal_size = 2.0
+max_decal_size = 4.5
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(5.63, 0, 0, 0, 5.63, 0, 0, 0, 5.63, 0, 2.39579, 0)
