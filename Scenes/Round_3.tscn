@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3tjgbvo1emul"]
+
+[ext_resource type="Script" path="res://Scripts/round.gd" id="1_juwit"]
+
+[node name="Round" type="Node3D"]
+script = ExtResource("1_juwit")
+first_round = Array[int]([2, 2, 2, 2])

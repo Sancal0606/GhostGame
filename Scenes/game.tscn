@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://do85o2k7imswv"]
+[gd_scene load_steps=24 format=3 uid="uid://do85o2k7imswv"]
 
 [ext_resource type="PackedScene" uid="uid://lxmjpl5w53r6" path="res://Scenes/player.tscn" id="1_et54k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_n6kb2"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dv8b4eqlbj1bs" path="res://Scenes/enemy_shotgun.tscn" id="3_76vqf"]
 [ext_resource type="PackedScene" uid="uid://mu0quivk6j4r" path="res://Assets/Floor_Wood.gltf" id="4_1dsv3"]
 [ext_resource type="PackedScene" uid="uid://cipxumv7kb2s4" path="res://Scenes/enemy_sniper.tscn" id="4_6gl8x"]
+[ext_resource type="PackedScene" uid="uid://j82ojp1xio4" path="res://Scenes/Round_1.tscn" id="5_llqsd"]
+[ext_resource type="PackedScene" uid="uid://cl3thkr03115o" path="res://Scenes/Round_2.tscn" id="6_i16fj"]
+[ext_resource type="PackedScene" uid="uid://d3tjgbvo1emul" path="res://Scenes/Round_3.tscn" id="7_tkrjm"]
 [ext_resource type="Shader" path="res://Shaders/color_correction.gdshader" id="10_h2qp8"]
 [ext_resource type="PackedScene" uid="uid://drr4r31bemgp3" path="res://Models/wood_tile.tscn" id="10_hl8ek"]
 [ext_resource type="PackedScene" uid="uid://1mriu75os2x" path="res://Models/test_wall.tscn" id="17_qyfsj"]
@@ -56,9 +59,7 @@ script = ExtResource("1_n6kb2")
 enemyNormal_scene = ExtResource("2_ecup3")
 enemyShotgun_scene = ExtResource("3_76vqf")
 enemySniper_scene = ExtResource("4_6gl8x")
-first_round = Array[int]([0, 0, 0])
-second_round = Array[int]([1, 1])
-third_round = Array[int]([0, 0])
+rounds = Array[PackedScene]([ExtResource("5_llqsd"), ExtResource("6_i16fj"), ExtResource("7_tkrjm")])
 
 [node name="Player" parent="." instance=ExtResource("1_et54k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613146, 5.89667, -11.0475)

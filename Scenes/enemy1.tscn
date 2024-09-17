@@ -57,7 +57,7 @@ size = Vector3(1, 1.34714, 1)
 [node name="Standard" type="CharacterBody3D" groups=["mob"]]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_h8oxu")
 posseses_enemy = ExtResource("2_b7gp6")
 bullet = ExtResource("3_mldth")
