@@ -57,8 +57,6 @@ enemyNormal_scene = ExtResource("2_ecup3")
 enemyShotgun_scene = ExtResource("3_76vqf")
 enemySniper_scene = ExtResource("4_6gl8x")
 first_round = Array[int]([0, 0, 0])
-second_round = Array[int]([1, 1])
-third_round = Array[int]([0, 0])
 
 [node name="Player" parent="." instance=ExtResource("1_et54k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613146, 5.89667, -11.0475)
@@ -607,3 +605,9 @@ shape = SubResource("BoxShape3D_drggf")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -59, 11.035, -2.57897e-06)
 shape = SubResource("BoxShape3D_drggf")
+
+[node name="Standard" parent="." instance=ExtResource("2_ecup3")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -22, 1, 1)
+
+[node name="Standard2" parent="." instance=ExtResource("2_ecup3")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -10, 1, 3)

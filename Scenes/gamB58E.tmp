@@ -56,9 +56,7 @@ script = ExtResource("1_n6kb2")
 enemyNormal_scene = ExtResource("2_ecup3")
 enemyShotgun_scene = ExtResource("3_76vqf")
 enemySniper_scene = ExtResource("4_6gl8x")
-first_round = Array[int]([0, 0, 0])
-second_round = Array[int]([1, 1])
-third_round = Array[int]([0, 0])
+first_round = Array[int]([1, 1, 1])
 
 [node name="Player" parent="." instance=ExtResource("1_et54k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613146, 5.89667, -11.0475)

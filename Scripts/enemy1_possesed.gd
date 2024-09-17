@@ -78,7 +78,6 @@ func _on_timer_timeout():
 	return_possesion()
 	
 func take_damage(_damage,_dir):
-	print(damageCount)
 	if damageCount <= 0:
 		$Pivot/Possessed/Armature/Skeleton3D/Mesh.set_surface_override_material(0,DAMAGE_MAT)
 		damageCount = damageCooldown

@@ -61,6 +61,8 @@ collision_mask = 2
 script = ExtResource("1_h8oxu")
 posseses_enemy = ExtResource("2_b7gp6")
 bullet = ExtResource("3_mldth")
+minTimeShoot = 5.0
+maxTimeShoot = 50.0
 damage_force = 20
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -72,6 +74,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0359024, 0, 0.0462065
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.0809177, 1.27142, 1.6416)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Flash"]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_3bwn2")
 }

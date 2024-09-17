@@ -33,6 +33,7 @@ func _physics_process(delta):
 	velocity += additional_forces
 	move_and_slide()
 	
+	
 func initialize(player, initPosition):
 	target = player
 	position = initPosition
@@ -70,6 +71,7 @@ func die():
 	queue_free()
 
 func _on_timer_timeout():
+	print("Hi")
 	var bulletTemp = bullet.instantiate()
 	bulletTemp.global_transform = $Pivot/BulletPoint.global_transform
 	var dirTemp = target.position - $Pivot/BulletPoint.global_position

@@ -41,7 +41,6 @@ func _ready():
 
 func _process(delta):
 	damageCount -= delta
-	print(ghost)
 	if velocity.y != 0:
 		decal_size -= velocity.y / abs(velocity.y) * 0.5
 	decal_size = clampf(decal_size,min_decal_size,max_decal_size)

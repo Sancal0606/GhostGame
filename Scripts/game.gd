@@ -10,19 +10,63 @@ var enemies = []
 @export var enemySniper_scene: PackedScene
 #velocidad de movimiento
 
+
 var lookDirection = 2
 
+enum enum_enemy {Standard, Shotgun, Sniper}
+@export var first_round  : Array[enum_enemy]
+@export var second_round : Array[enum_enemy]
+@export var third_round  : Array[enum_enemy]
+var round = 1
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Engine.time_scale = 1.2
+	var randomPos 
+	var temp
+	for enemy in first_round:
+		randomPos = Vector3(randf_range(-30.0, 30-0),0,randf_range(-30.0, 30-0))
+		match enemy:
+			enum_enemy.Standard:
+				create_enemy(randomPos,enemyNormal_scene)
+			enum_enemy.Sniper:
+				create_enemy(randomPos,enemySniper_scene)
+			enum_enemy.Shotgun:
+				create_enemy(randomPos,enemyShotgun_scene)
 	
-	create_enemy(Vector3(35,0,35),enemyShotgun_scene)
-	create_enemy(Vector3(40,0,0),enemyNormal_scene)
-	create_enemy(Vector3(-35,0,0),enemySniper_scene)
+
 
 func _process(delta):
 	if !$Player.ghost:
 		$Ball.position = lookDirection
+	#print(enemies.size())
+	if enemies.size() <= 0:
+		print(round)
+		if round == 1:
+			var randomPos 
+			var temp
+			for enemy in second_round:
+				randomPos = Vector3(randf_range(-30.0, 30-0),0,randf_range(-30.0, 30-0))
+				match enemy:
+					enum_enemy.Standard:
+						create_enemy(randomPos,enemyNormal_scene)
+					enum_enemy.Sniper:
+						create_enemy(randomPos,enemySniper_scene)
+					enum_enemy.Shotgun:
+						create_enemy(randomPos,enemyShotgun_scene)
+			round+=1
+		elif round == 2:
+			var randomPos 
+			var temp
+			for enemy in third_round:
+				randomPos = Vector3(randf_range(-30.0, 30-0),0,randf_range(-30.0, 30-0))
+				match enemy:
+					enum_enemy.Standard:
+						create_enemy(randomPos,enemyNormal_scene)
+					enum_enemy.Sniper:
+						create_enemy(randomPos,enemySniper_scene)
+					enum_enemy.Shotgun:
+						create_enemy(randomPos,enemyShotgun_scene)
+			round+=1
 
 func _physics_process(delta):
 	#guarda la ubicacion del mouse en pixeles
