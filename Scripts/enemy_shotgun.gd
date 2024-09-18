@@ -34,6 +34,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func initialize(player, initPosition):
+	print(player)
 	target = player
 	position = initPosition
 	$Pivot/BulletPoint/Timer.wait_time = randf_range(1.5,2.5)
@@ -51,6 +52,7 @@ func posses():
 	$"..".add_child(possesTemp)
 	$"..".enemies.erase(self)
 	$"..".change_target_enemies(possesTemp)
+	$"..".current_target = possesTemp
 	queue_free()
 	
 func change_target(newTarget):

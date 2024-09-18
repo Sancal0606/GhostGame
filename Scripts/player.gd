@@ -145,6 +145,7 @@ func check_collisions():
 
 func returnPossesion(pos):
 	damageCount = damageCooldown
+	$"..".change_target_enemies(self)
 	show()
 	ghost = true
 	position=pos

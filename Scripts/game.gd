@@ -79,7 +79,6 @@ func create_enemy(pos,type):
 	var enemy = type.instantiate()
 	var prueba = current_target
 	enemy.initialize(prueba,pos)
-	#enemy.target = temp
 	add_child(enemy)
 	enemies.append(enemy)
 	
