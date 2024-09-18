@@ -10,7 +10,7 @@ var enemies = []
 @export var enemySniper_scene: PackedScene
 #velocidad de movimiento
 
-
+var current_target
 var lookDirection = 2
 
 enum enum_enemy {Standard, Shotgun, Sniper}
@@ -22,9 +22,13 @@ func _ready():
 	Engine.time_scale = 1.2
 	var randomPos 
 	var temp
+	current_target = $Player
 	prepare_round()
 	
 func prepare_round():
+	if rounds.size() <= 0:
+		print("Win")
+		return
 	var current_round = rounds[0].instantiate().first_round
 	var randomPos 
 	var temp
@@ -73,7 +77,7 @@ func _physics_process(delta):
 		
 func create_enemy(pos,type):
 	var enemy = type.instantiate()
-	var prueba = $Player
+	var prueba = current_target
 	enemy.initialize(prueba,pos)
 	#enemy.target = temp
 	add_child(enemy)
@@ -83,6 +87,7 @@ func destroy_enemy(enemy):
 	enemies.erase(enemy)
 	
 func change_target_enemies(target):
+	current_target = target
 	for enemy in enemies:
 		enemy.change_target(target)
 	

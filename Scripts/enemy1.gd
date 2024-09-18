@@ -34,7 +34,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-func initialize(player, initPosition):
+func initialize(player, initPosition):	
 	target = player
 	position = initPosition
 	$Pivot/BulletPoint/Timer.wait_time = randf_range(minTimeShoot,maxTimeShoot)
@@ -71,7 +71,6 @@ func die():
 	queue_free()
 
 func _on_timer_timeout():
-	print("Hi")
 	var bulletTemp = bullet.instantiate()
 	bulletTemp.global_transform = $Pivot/BulletPoint.global_transform
 	var dirTemp = target.position - $Pivot/BulletPoint.global_position
