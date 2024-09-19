@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpjy41a4ivlto"]
+[gd_scene load_steps=16 format=3 uid="uid://bpjy41a4ivlto"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_shotgun_possesed.gd" id="1_kt8rw"]
 [ext_resource type="PackedScene" uid="uid://314byjv3jur5" path="res://Scenes/bulletPlayer.tscn" id="2_jvnpv"]
 [ext_resource type="PackedScene" uid="uid://uuldpiokturl" path="res://Models/test_soldier_shotgun_possessed.tscn" id="3_3tjug"]
+[ext_resource type="PackedScene" uid="uid://dxxkp8ynemrxi" path="res://Scenes/flash.tscn" id="3_87yg2"]
 [ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="4_ie0up"]
 [ext_resource type="ArrayMesh" uid="uid://biqyesxminuwo" path="res://Pruebas/muzzle_flash.obj" id="4_xj645"]
 [ext_resource type="Shader" uid="uid://bnqwgryv7mvwa" path="res://Pruebas/Muzzle_flash.tres" id="5_6bmnd"]
@@ -66,6 +67,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 collision_mask = 6
 script = ExtResource("1_kt8rw")
 bullet = ExtResource("2_jvnpv")
+flash = ExtResource("3_87yg2")
 life = 3
 cooldown = 1.0
 damage_force = 20

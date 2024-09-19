@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cipxumv7kb2s4"]
+[gd_scene load_steps=15 format=3 uid="uid://cipxumv7kb2s4"]
 
 [ext_resource type="Script" path="res://Scripts/enemy1.gd" id="1_yjtkf"]
 [ext_resource type="PackedScene" uid="uid://c3l64wexii5vg" path="res://Scenes/enemy_sniper_possesed.tscn" id="2_cop2k"]
 [ext_resource type="PackedScene" uid="uid://bviplsjkmvv18" path="res://Scenes/bullet_sniper.tscn" id="3_w0i2a"]
+[ext_resource type="PackedScene" uid="uid://dxxkp8ynemrxi" path="res://Scenes/flash.tscn" id="4_eqn5y"]
 [ext_resource type="Material" uid="uid://o0gwcglad4fu" path="res://Materials/soldier_sniper.tres" id="4_pxs65"]
 [ext_resource type="PackedScene" uid="uid://dlriqh7ycm5cm" path="res://Models/test_soldier_sniper.tscn" id="4_sq531"]
 [ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="5_mee6h"]
@@ -62,6 +63,7 @@ collision_mask = 2
 script = ExtResource("1_yjtkf")
 posseses_enemy = ExtResource("2_cop2k")
 bullet = ExtResource("3_w0i2a")
+flash = ExtResource("4_eqn5y")
 minTimeShoot = 2.5
 maxTimeShoot = 4.0
 maxRange = 120

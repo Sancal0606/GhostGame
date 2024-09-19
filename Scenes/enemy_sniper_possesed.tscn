@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3l64wexii5vg"]
+[gd_scene load_steps=14 format=3 uid="uid://c3l64wexii5vg"]
 
 [ext_resource type="Script" path="res://Scripts/enemy1_possesed.gd" id="1_8sn38"]
 [ext_resource type="PackedScene" uid="uid://dp83b5gwdxuxn" path="res://Scenes/bulletPlayer_Sniper.tscn" id="2_ymjxm"]
 [ext_resource type="Material" uid="uid://dudx704k0kf2p" path="res://Materials/soldier_sniper_possessed.tres" id="3_dk5o2"]
+[ext_resource type="PackedScene" uid="uid://dxxkp8ynemrxi" path="res://Scenes/flash.tscn" id="3_dq3q0"]
 [ext_resource type="PackedScene" uid="uid://ccfgrl8dsh0qc" path="res://Models/test_soldier_sniper_possessed.tscn" id="3_igh7m"]
 [ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="4_33ow8"]
 [ext_resource type="ArrayMesh" uid="uid://biqyesxminuwo" path="res://Pruebas/muzzle_flash.obj" id="5_v7uuq"]
@@ -59,6 +60,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 collision_mask = 6
 script = ExtResource("1_8sn38")
 bullet = ExtResource("2_ymjxm")
+flash = ExtResource("3_dq3q0")
 life = 2
 damage_force = 20
 ENEMY_MAT = ExtResource("3_dk5o2")

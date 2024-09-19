@@ -4,6 +4,7 @@ var min_speed = 12
 var max_speed = 16
 @export var posseses_enemy: PackedScene
 @export var bullet: PackedScene
+@export var flash: PackedScene
 @export var life = 3
 @export var minTimeShoot = 1.5
 @export var maxTimeShoot = 2.5
@@ -74,12 +75,17 @@ func die():
 func _on_timer_timeout():
 	var bulletTemp = bullet.instantiate()
 	bulletTemp.global_transform = $Pivot/BulletPoint.global_transform
+	var flashTemp = flash.instantiate()
+	flashTemp.global_position = $Pivot/BulletPoint.global_position
+	
 	var dirTemp = target.position - $Pivot/BulletPoint.global_position
+	
 	dirTemp.y = 0
 	dirTemp = dirTemp.normalized()
 	bulletTemp._initialize(dirTemp)
-	$Pivot/Flash/AnimationPlayer.play("slash")
+	#$Pivot/Flash/AnimationPlayer.play("slash")
 	$"..".add_child(bulletTemp)
+	$"..".add_child(flashTemp)
 
 
 func _on_damage_timer_timeout():

@@ -4,6 +4,7 @@ var min_speed = 12
 var max_speed = 16
 @export var posseses_enemy: PackedScene
 @export var bullet: PackedScene
+@export var flash: PackedScene
 @export var life = 3
 @export var angleDelta = 5
 var rotationSpeed = 10
@@ -72,7 +73,9 @@ func die():
 	queue_free()
 
 func _on_timer_timeout():
-	$Pivot/Flash/AnimationPlayer.play("slash")
+	var flashTemp = flash.instantiate()
+	flashTemp.global_position = $Pivot/BulletPoint.global_position
+	$"..".add_child(flashTemp)
 	#Get angles
 	var dirTemp = target.position - $Pivot/BulletPoint.global_position
 	dirTemp.y = 0

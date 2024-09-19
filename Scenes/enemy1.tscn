@@ -1,55 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0yi3wdtu38nh"]
+[gd_scene load_steps=8 format=3 uid="uid://b0yi3wdtu38nh"]
 
 [ext_resource type="Script" path="res://Scripts/enemy1.gd" id="1_h8oxu"]
 [ext_resource type="PackedScene" uid="uid://cmse4u4a1rwsk" path="res://Scenes/enemy1_possesed.tscn" id="2_b7gp6"]
 [ext_resource type="PackedScene" uid="uid://betu6w6h8ifru" path="res://Scenes/bullet.tscn" id="3_mldth"]
 [ext_resource type="PackedScene" uid="uid://ykxc7wxu47sc" path="res://Models/test_soldier.tscn" id="4_23frg"]
 [ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="5_7y3dr"]
-[ext_resource type="ArrayMesh" uid="uid://biqyesxminuwo" path="res://Pruebas/muzzle_flash.obj" id="5_313dk"]
-[ext_resource type="Shader" uid="uid://bnqwgryv7mvwa" path="res://Pruebas/Muzzle_flash.tres" id="6_2ntpu"]
-
-[sub_resource type="Animation" id="Animation_k8wjg"]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MuzzleFlash:surface_material_override/0:shader_parameter/FloatParameter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.25, 0.0, 0.6]
-}
-
-[sub_resource type="Animation" id="Animation_1lnew"]
-resource_name = "slash"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MuzzleFlash:surface_material_override/0:shader_parameter/FloatParameter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.25, 0.0, 0.6]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3bwn2"]
-_data = {
-"RESET": SubResource("Animation_k8wjg"),
-"slash": SubResource("Animation_1lnew")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3dnt"]
-render_priority = 0
-shader = ExtResource("6_2ntpu")
-shader_parameter/ColorParameter = Color(0.929993, 0.468393, 0, 1)
-shader_parameter/FloatParameter = -0.25
+[ext_resource type="PackedScene" uid="uid://dxxkp8ynemrxi" path="res://Scenes/flash.tscn" id="5_mcnnd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vgwi1"]
 size = Vector3(1, 1.34714, 1)
@@ -61,29 +17,15 @@ collision_mask = 6
 script = ExtResource("1_h8oxu")
 posseses_enemy = ExtResource("2_b7gp6")
 bullet = ExtResource("3_mldth")
-minTimeShoot = 5.0
-maxTimeShoot = 50.0
+flash = ExtResource("5_mcnnd")
+minTimeShoot = 2.0
+maxTimeShoot = 5.0
 damage_force = 20
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Enemy" parent="Pivot" instance=ExtResource("4_23frg")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0359024, 0, 0.0462065)
-
-[node name="Flash" type="Node3D" parent="Pivot"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.0809177, 1.27142, 1.6416)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Flash"]
-reset_on_save = false
-libraries = {
-"": SubResource("AnimationLibrary_3bwn2")
-}
-speed_scale = 3.0
-
-[node name="MuzzleFlash" type="MeshInstance3D" parent="Pivot/Flash"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.421432, -0.29274, 1.19209e-07, 0.487322)
-mesh = ExtResource("5_313dk")
-surface_material_override/0 = SubResource("ShaderMaterial_i3dnt")
 
 [node name="BulletPoint" type="Node3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136243, 1.27142, 1.22267)

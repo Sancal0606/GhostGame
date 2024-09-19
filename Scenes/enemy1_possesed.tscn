@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmse4u4a1rwsk"]
+[gd_scene load_steps=13 format=3 uid="uid://cmse4u4a1rwsk"]
 
 [ext_resource type="Script" path="res://Scripts/enemy1_possesed.gd" id="1_rxhwj"]
 [ext_resource type="PackedScene" uid="uid://314byjv3jur5" path="res://Scenes/bulletPlayer.tscn" id="2_v4lpb"]
+[ext_resource type="PackedScene" uid="uid://dxxkp8ynemrxi" path="res://Scenes/flash.tscn" id="3_5puri"]
 [ext_resource type="PackedScene" uid="uid://clg1b5o4a50kf" path="res://Models/test_soldier_possessed.tscn" id="3_febnf"]
 [ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="3_kck78"]
 [ext_resource type="ArrayMesh" uid="uid://biqyesxminuwo" path="res://Pruebas/muzzle_flash.obj" id="4_praq5"]
@@ -58,6 +59,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 collision_mask = 6
 script = ExtResource("1_rxhwj")
 bullet = ExtResource("2_v4lpb")
+flash = ExtResource("3_5puri")
 cooldown = 0.5
 damage_force = 20
 

@@ -8,6 +8,7 @@ var target
 #velocidad de rotacion
 @export var rotationSpeed = 5
 @export var bullet: PackedScene
+@export var flash: PackedScene
 @export var life = 15
 @export var cooldown = 2.0
 var countShot
@@ -96,7 +97,9 @@ func shoot():
 	bulletTemp.scale = Vector3(6,6,6)
 	var look_direction = Vector2(temp.z,temp.x)
 	bulletTemp.rotation.y = look_direction.angle()
-	$Pivot/Flash/AnimationPlayer.play("slash")
+	var flashTemp = flash.instantiate()
+	flashTemp.global_position = $Pivot/BulletPoint.global_position
+	$"..".add_child(flashTemp)
 	var tTemp = temp
 	tTemp.y = 0
 	countShot = cooldown

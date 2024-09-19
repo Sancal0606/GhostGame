@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dv8b4eqlbj1bs"]
+[gd_scene load_steps=14 format=3 uid="uid://dv8b4eqlbj1bs"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_shotgun.gd" id="1_1ijdq"]
 [ext_resource type="PackedScene" uid="uid://bpjy41a4ivlto" path="res://Scenes/enemy_shotgun_possesed.tscn" id="2_4tuyn"]
 [ext_resource type="PackedScene" uid="uid://betu6w6h8ifru" path="res://Scenes/bullet.tscn" id="3_yt5u0"]
 [ext_resource type="PackedScene" uid="uid://biydkhgn0iqf8" path="res://Models/test_soldier_shotgun.tscn" id="4_qtj4u"]
+[ext_resource type="PackedScene" uid="uid://dxxkp8ynemrxi" path="res://Scenes/flash.tscn" id="4_xh6w4"]
 [ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="5_gx7xg"]
 [ext_resource type="ArrayMesh" uid="uid://biqyesxminuwo" path="res://Pruebas/muzzle_flash.obj" id="5_tvfxl"]
 [ext_resource type="Shader" uid="uid://bnqwgryv7mvwa" path="res://Pruebas/Muzzle_flash.tres" id="6_iy8kt"]
@@ -61,6 +62,7 @@ collision_mask = 2
 script = ExtResource("1_1ijdq")
 posseses_enemy = ExtResource("2_4tuyn")
 bullet = ExtResource("3_yt5u0")
+flash = ExtResource("4_xh6w4")
 damage_force = 20
 
 [node name="Pivot" type="Node3D" parent="."]
