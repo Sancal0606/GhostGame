@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://do85o2k7imswv"]
+[gd_scene load_steps=26 format=3 uid="uid://do85o2k7imswv"]
 
 [ext_resource type="PackedScene" uid="uid://lxmjpl5w53r6" path="res://Scenes/player.tscn" id="1_et54k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_n6kb2"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://d3tjgbvo1emul" path="res://Scenes/Round_3.tscn" id="7_tkrjm"]
 [ext_resource type="Shader" path="res://Shaders/color_correction.gdshader" id="10_h2qp8"]
 [ext_resource type="PackedScene" uid="uid://drr4r31bemgp3" path="res://Models/wood_tile.tscn" id="10_hl8ek"]
+[ext_resource type="Theme" uid="uid://8kga12s2y8ep" path="res://theme_ui.tres" id="11_1yf23"]
+[ext_resource type="Texture2D" uid="uid://vxrggxy6d25b" path="res://Sprites/icon_life.png" id="11_u8txv"]
 [ext_resource type="PackedScene" uid="uid://1mriu75os2x" path="res://Models/test_wall.tscn" id="17_qyfsj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2jwfj"]
@@ -288,6 +290,63 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_snqdy")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+offset_right = 4108.0
+offset_bottom = 1024.0
+scale = Vector2(0.105, 0.105)
+theme = ExtResource("11_1yf23")
+columns = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_u8txv")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_u8txv")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_u8txv")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_u8txv")
+stretch_mode = 5
+
+[node name="wave" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -148.0
+offset_top = 14.0
+offset_right = 136.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme = ExtResource("11_1yf23")
+theme_override_font_sizes/font_size = 76
+text = "WAVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = 238.0
+offset_right = -399.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_1yf23")
+text = "Pausa"
 
 [node name="floor_wood" type="Node3D" parent="."]
 
