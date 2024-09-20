@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://do85o2k7imswv"]
+[gd_scene load_steps=26 format=3 uid="uid://do85o2k7imswv"]
 
 [ext_resource type="PackedScene" uid="uid://lxmjpl5w53r6" path="res://Scenes/player.tscn" id="1_et54k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_n6kb2"]
@@ -53,22 +53,15 @@ shader_parameter/smoothness = 0.4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snqdy"]
 
-[sub_resource type="Theme" id="Theme_frcq1"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_drggf"]
 size = Vector3(110, 26.7, 9.185)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("life_icons", "ui_Game", "ui_Pause", "ui_GameOver", "ui_Win")]
+[node name="Game" type="Node3D"]
 script = ExtResource("1_n6kb2")
 enemyNormal_scene = ExtResource("2_ecup3")
 enemyShotgun_scene = ExtResource("3_76vqf")
 enemySniper_scene = ExtResource("4_6gl8x")
-life_icons = [NodePath("CanvasLayer/Game/Life/TextureRect"), NodePath("CanvasLayer/Game/Life/TextureRect2"), NodePath("CanvasLayer/Game/Life/TextureRect3")]
 rounds = Array[PackedScene]([ExtResource("5_llqsd"), ExtResource("6_i16fj"), ExtResource("7_tkrjm")])
-ui_Game = NodePath("CanvasLayer/Game")
-ui_Pause = NodePath("CanvasLayer/Pause")
-ui_GameOver = NodePath("CanvasLayer/GameOver")
-ui_Win = NodePath("CanvasLayer/Win")
 
 [node name="Player" parent="." instance=ExtResource("1_et54k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613146, 5.89667, -11.0475)
@@ -266,7 +259,7 @@ transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.567844, 0.823136, 0, -0.823136, 0.567844, 0, 116.011, 80.973)
 environment = SubResource("Environment_k7rs0")
-fov = 45.0
+fov = 42.4
 size = 100.0
 near = 0.06
 
@@ -298,313 +291,62 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_snqdy")
 
-[node name="Game" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+offset_right = 4108.0
+offset_bottom = 1024.0
+scale = Vector2(0.055, 0.055)
+theme = ExtResource("11_1yf23")
+columns = 4
 
-[node name="wave" type="Label" parent="CanvasLayer/Game"]
-layout_mode = 1
-anchors_preset = 7
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_u8txv")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_u8txv")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_u8txv")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_u8txv")
+stretch_mode = 5
+
+[node name="wave" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -166.0
-offset_top = -121.0
-offset_right = 118.0
-offset_bottom = -23.0
+offset_left = -224.0
+offset_top = 512.0
+offset_right = 60.0
+offset_bottom = 610.0
 grow_horizontal = 2
-grow_vertical = 0
 theme = ExtResource("11_1yf23")
 theme_override_font_sizes/font_size = 76
 text = "WAVE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="wave_txt" type="Label" parent="CanvasLayer/Game/wave"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 103.0
-offset_right = 239.0
-offset_bottom = 98.0
-grow_horizontal = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 76
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Life_tile" type="GridContainer" parent="CanvasLayer/Game"]
-layout_mode = 1
-offset_left = 13.0
-offset_top = 12.0
-offset_right = 4121.0
-offset_bottom = 1036.0
-scale = Vector2(0.073817, 0.073817)
-theme = ExtResource("11_1yf23")
-columns = 4
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Game/Life_tile"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-theme = SubResource("Theme_frcq1")
-texture = ExtResource("11_u8txv")
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Game/Life_tile"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-theme = SubResource("Theme_frcq1")
-texture = ExtResource("11_u8txv")
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Game/Life_tile"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-theme = SubResource("Theme_frcq1")
-texture = ExtResource("11_u8txv")
-stretch_mode = 5
-
-[node name="Life" type="GridContainer" parent="CanvasLayer/Game"]
-layout_mode = 1
-offset_left = 13.0
-offset_top = 12.0
-offset_right = 4121.0
-offset_bottom = 1036.0
-scale = Vector2(0.073817, 0.073817)
-theme = ExtResource("11_1yf23")
-columns = 4
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Game/Life"]
-layout_mode = 2
-texture = ExtResource("11_u8txv")
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Game/Life"]
-layout_mode = 2
-texture = ExtResource("11_u8txv")
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Game/Life"]
-layout_mode = 2
-texture = ExtResource("11_u8txv")
-stretch_mode = 5
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Game"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -196.0
-offset_top = 7.0
-offset_right = 828.0
-offset_bottom = 1031.0
-grow_horizontal = 0
-scale = Vector2(0.164738, 0.164738)
-max_value = 1.0
-step = 0.01
-value = 1.0
-fill_mode = 5
-texture_under = ExtResource("11_u8txv")
-texture_progress = ExtResource("11_u8txv")
-tint_under = Color(0, 0, 0, 0.686275)
-
-[node name="Pause" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Pause"]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -52.0
-offset_right = -44.0
-offset_bottom = -52.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.06256, 1.14482)
-
-[node name="Label" type="Label" parent="CanvasLayer/Pause"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -181.5
-offset_right = 181.5
-offset_bottom = 147.0
-grow_horizontal = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 121
-text = "Pause"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause"]
-layout_mode = 1
+[node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -121.0
-offset_top = -71.0
-offset_right = 121.0
-offset_bottom = 71.0
+offset_left = -536.0
+offset_top = 238.0
+offset_right = -399.0
+offset_bottom = 294.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="btn_continue" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
-layout_mode = 2
 theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 50
-text = "Continue"
-
-[node name="btn_pause_menu" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 50
-text = "Main menu"
-
-[node name="GameOver" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/GameOver"]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -52.0
-offset_right = -44.0
-offset_bottom = -52.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.06256, 1.14482)
-
-[node name="Label" type="Label" parent="CanvasLayer/GameOver"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -181.5
-offset_right = 181.5
-offset_bottom = 147.0
-grow_horizontal = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 121
-text = "Game Over"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOver"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -121.0
-offset_top = -71.0
-offset_right = 121.0
-offset_bottom = 71.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="btn_try" type="Button" parent="CanvasLayer/GameOver/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 50
-text = "Try again"
-
-[node name="btn_game_menu" type="Button" parent="CanvasLayer/GameOver/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 50
-text = "Main menu"
-
-[node name="Win" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = 5.0
-offset_right = -12.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Win"]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -52.0
-offset_right = -44.0
-offset_bottom = -52.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.06256, 1.14482)
-
-[node name="Label" type="Label" parent="CanvasLayer/Win"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -441.0
-offset_top = 88.0
-offset_right = 522.0
-offset_bottom = 431.0
-grow_horizontal = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 141
-text = "Thanks for playing"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Win"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 143.0
-offset_right = 168.0
-offset_bottom = 285.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="btn_menu" type="Button" parent="CanvasLayer/Win/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 50
-text = "Main menu"
+text = "Pausa"
 
 [node name="floor_wood" type="Node3D" parent="."]
 
@@ -925,9 +667,3 @@ shape = SubResource("BoxShape3D_drggf")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -59, 11.035, -2.57897e-06)
 shape = SubResource("BoxShape3D_drggf")
-
-[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/btn_continue" to="." method="_on_btn_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/btn_pause_menu" to="." method="_on_btn_pause_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/btn_try" to="." method="_on_btn_try_pressed"]
-[connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/btn_game_menu" to="." method="_on_btn_game_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/Win/VBoxContainer/btn_menu" to="." method="_on_btn_menu_pressed"]

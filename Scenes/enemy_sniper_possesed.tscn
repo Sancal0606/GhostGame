@@ -91,7 +91,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_i3dnt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25573, 0)
 shape = SubResource("BoxShape3D_vgwi1")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="PossesTime" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 autostart = true
@@ -104,5 +104,5 @@ modulate = Color(0, 0, 0, 0.47451)
 [node name="Damage_Timer" type="Timer" parent="."]
 wait_time = 0.1
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PossesTime" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Damage_Timer" to="." method="_on_damage_timer_timeout"]

@@ -58,7 +58,7 @@ shader_parameter/smoothness = 0.4
 [sub_resource type="BoxShape3D" id="BoxShape3D_drggf"]
 size = Vector3(110, 26.7, 9.185)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("life_icons", "ui_Game", "ui_Pause", "ui_GameOver", "ui_Win")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("life_icons", "ui_Game", "ui_Pause", "ui_GameOver")]
 script = ExtResource("1_n6kb2")
 enemyNormal_scene = ExtResource("2_ecup3")
 enemyShotgun_scene = ExtResource("3_76vqf")
@@ -68,7 +68,6 @@ rounds = Array[PackedScene]([ExtResource("5_llqsd"), ExtResource("6_i16fj"), Ext
 ui_Game = NodePath("CanvasLayer/Game")
 ui_Pause = NodePath("CanvasLayer/Pause")
 ui_GameOver = NodePath("CanvasLayer/GameOver")
-ui_Win = NodePath("CanvasLayer/Win")
 
 [node name="Player" parent="." instance=ExtResource("1_et54k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613146, 5.89667, -11.0475)
@@ -407,10 +406,8 @@ offset_right = 828.0
 offset_bottom = 1031.0
 grow_horizontal = 0
 scale = Vector2(0.164738, 0.164738)
-max_value = 1.0
-step = 0.01
-value = 1.0
-fill_mode = 5
+value = 59.0
+fill_mode = 4
 texture_under = ExtResource("11_u8txv")
 texture_progress = ExtResource("11_u8txv")
 tint_under = Color(0, 0, 0, 0.686275)
@@ -472,7 +469,7 @@ theme = ExtResource("11_1yf23")
 theme_override_font_sizes/font_size = 50
 text = "Continue"
 
-[node name="btn_pause_menu" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("11_1yf23")
 theme_override_font_sizes/font_size = 50
@@ -535,72 +532,7 @@ theme = ExtResource("11_1yf23")
 theme_override_font_sizes/font_size = 50
 text = "Try again"
 
-[node name="btn_game_menu" type="Button" parent="CanvasLayer/GameOver/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 50
-text = "Main menu"
-
-[node name="Win" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = 5.0
-offset_right = -12.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Win"]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -52.0
-offset_right = -44.0
-offset_bottom = -52.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.06256, 1.14482)
-
-[node name="Label" type="Label" parent="CanvasLayer/Win"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -441.0
-offset_top = 88.0
-offset_right = 522.0
-offset_bottom = 431.0
-grow_horizontal = 2
-theme = ExtResource("11_1yf23")
-theme_override_font_sizes/font_size = 141
-text = "Thanks for playing"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Win"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 143.0
-offset_right = 168.0
-offset_bottom = 285.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="btn_menu" type="Button" parent="CanvasLayer/Win/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/GameOver/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("11_1yf23")
 theme_override_font_sizes/font_size = 50
@@ -927,7 +859,4 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -59, 1
 shape = SubResource("BoxShape3D_drggf")
 
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/btn_continue" to="." method="_on_btn_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/btn_pause_menu" to="." method="_on_btn_pause_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/btn_try" to="." method="_on_btn_try_pressed"]
-[connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/btn_game_menu" to="." method="_on_btn_game_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/Win/VBoxContainer/btn_menu" to="." method="_on_btn_menu_pressed"]

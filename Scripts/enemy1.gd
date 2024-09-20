@@ -50,7 +50,7 @@ func posses():
 	possesTemp.initialize()
 	target.hide()
 	$"..".add_child(possesTemp)
-	$"..".enemies.erase(self)
+	$"..".destroy_enemy(self)
 	$"..".change_target_enemies(possesTemp)
 	$"..".current_target = possesTemp
 	queue_free()

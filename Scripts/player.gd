@@ -157,6 +157,7 @@ func take_damage(_damage,_dir):
 		currentLife -= _damage
 		additional_forces = _dir * damage_force
 		$Damage_Timer.start()
+		$"..".show_life(currentLife,maxLife)
 		if currentLife <= 0:
 			$"..".game_over()
 		

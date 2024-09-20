@@ -5,3 +5,4 @@
 [resource]
 Button/fonts/font = ExtResource("1_2yi0c")
 Label/fonts/font = ExtResource("1_2yi0c")
+Panel/styles/panel = null

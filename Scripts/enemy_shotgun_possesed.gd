@@ -20,6 +20,7 @@ var target_velocity = Vector3.ZERO
 var dir
 var player
 var temp
+var timeLeft = 0.0
 var additional_forces = Vector3(0,0,0)
 @export var damage_force = 10
 
@@ -60,6 +61,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _process(delta):
+	timeLeft = $Timer.time_left/$Timer.wait_time
 	damageCount -= delta	
 	if damageCount <= 0:
 		$Pivot/Possessed/Armature_001/Skeleton3D/Cube_001.set_surface_override_material(0,ENEMY_MAT)
