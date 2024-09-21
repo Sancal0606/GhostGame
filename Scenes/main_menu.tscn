@@ -1,57 +1,197 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfi85hh0bm23t"]
+[gd_scene load_steps=8 format=3 uid="uid://cfi85hh0bm23t"]
 
 [ext_resource type="Script" path="res://Scripts/Control.gd" id="1_05ly1"]
 [ext_resource type="Theme" uid="uid://8kga12s2y8ep" path="res://theme_ui.tres" id="2_pqwxt"]
+[ext_resource type="PackedScene" uid="uid://bi8nmdlnbf643" path="res://Pruebas/monkey_prueba.tscn" id="3_qd48s"]
+[ext_resource type="PackedScene" uid="uid://drr4r31bemgp3" path="res://Models/wood_tile.tscn" id="4_fyfyx"]
+[ext_resource type="PackedScene" uid="uid://1mriu75os2x" path="res://Models/test_wall.tscn" id="5_0vtsc"]
 
-[node name="Main" type="Control"]
+[sub_resource type="Environment" id="Environment_3k0oo"]
+background_mode = 1
+background_color = Color(0.12168, 0.129072, 0.208623, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pu6ge"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_05ly1")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -497.5
-offset_top = -183.0
-offset_right = 497.5
-offset_bottom = 18.0
+offset_left = -555.0
+offset_top = 32.0
+offset_right = -45.0
+offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_pqwxt")
-theme_override_font_sizes/font_size = 166
+theme_override_font_sizes/font_size = 81
 text = "Ghost Game"
 
-[node name="btn_start" type="Button" parent="Panel"]
+[node name="btn_start" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -188.5
-offset_top = 40.0
-offset_right = 188.5
-offset_bottom = 176.0
+offset_left = -542.0
+offset_top = 128.0
+offset_right = -319.0
+offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_pqwxt")
-theme_override_font_sizes/font_size = 106
+theme_override_font_sizes/font_size = 46
 text = "Start"
 
-[connection signal="pressed" from="Panel/btn_start" to="." method="_on_btn_start_pressed"]
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.072478, -0.461799, 0.884018, -0.474641, -0.763577, -0.437797, 0.87719, -0.451322, -0.163846, -2.4916, 8.3941, -12.9891)
+light_energy = 3.287
+
+[node name="monkey_prueba" parent="." instance=ExtResource("3_qd48s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8, 0.7, -1)
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.983572, 0.180519, 0, -0.180519, 0.983572, 0, 5.54915, 11.9985)
+environment = SubResource("Environment_3k0oo")
+current = true
+fov = 45.0
+size = 100.0
+near = 0.06
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("SphereMesh_pu6ge")
+
+[node name="wood_tile" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 3.26, -1.017, 0.87)
+
+[node name="wood_tile2" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 7.667, -1.017, 0.87)
+
+[node name="wood_tile3" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -1.147, -1.017, 0.87)
+
+[node name="wood_tile4" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -5.667, -1.017, 0.87)
+
+[node name="wood_tile5" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -10.187, -1.017, 0.87)
+
+[node name="wood_tile6" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 3.26, -1.017, -3.65)
+
+[node name="wood_tile7" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 7.667, -1.017, -3.65)
+
+[node name="wood_tile8" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -1.147, -1.017, -3.65)
+
+[node name="wood_tile9" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -5.667, -1.017, -3.65)
+
+[node name="wood_tile10" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -10.187, -1.017, -3.65)
+
+[node name="wood_tile11" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 3.26, -1.017, -8.17)
+
+[node name="wood_tile12" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 7.667, -1.017, -8.17)
+
+[node name="wood_tile13" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -1.147, -1.017, -8.17)
+
+[node name="wood_tile14" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -5.667, -1.017, -8.17)
+
+[node name="wood_tile15" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -10.187, -1.017, -8.17)
+
+[node name="wood_tile16" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 3.26, -1.017, -12.69)
+
+[node name="wood_tile17" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 7.667, -1.017, -12.69)
+
+[node name="wood_tile21" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 12.187, -1.017, 0.87)
+
+[node name="wood_tile22" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 12.187, -1.017, -3.65)
+
+[node name="wood_tile23" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 12.187, -1.017, -8.17)
+
+[node name="wood_tile24" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 12.187, -1.017, -12.69)
+
+[node name="wood_tile18" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -1.147, -1.017, -12.69)
+
+[node name="wood_tile19" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -5.667, -1.017, -12.69)
+
+[node name="wood_tile20" parent="." instance=ExtResource("4_fyfyx")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -10.187, -1.017, -12.69)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.187, -1.817, -12.69)
+
+[node name="test_wall" parent="Node3D" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 11.8469, 0.369027, -2.04425)
+
+[node name="test_wall2" parent="Node3D" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 8.30708, 0.369027, -2.04425)
+
+[node name="test_wall3" parent="Node3D" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 4.76726, 0.369027, -2.04425)
+
+[node name="test_wall4" parent="Node3D" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 1.22743, 0.369027, -2.04425)
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -9.987, -1.817, 7.31)
+
+[node name="test_wall" parent="Node3D2" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 11.8469, 0.369027, -2.04425)
+
+[node name="test_wall2" parent="Node3D2" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 8.30708, 0.369027, -2.04425)
+
+[node name="test_wall3" parent="Node3D2" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 4.76726, 0.369027, -2.04425)
+
+[node name="test_wall4" parent="Node3D2" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 1.22743, 0.369027, -2.04425)
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10.013, -1.817, -20.69)
+
+[node name="test_wall" parent="Node3D3" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 11.8469, 0.369027, -2.04425)
+
+[node name="test_wall2" parent="Node3D3" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 8.30708, 0.369027, -2.04425)
+
+[node name="test_wall3" parent="Node3D3" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 4.76726, 0.369027, -2.04425)
+
+[node name="test_wall4" parent="Node3D3" instance=ExtResource("5_0vtsc")]
+transform = Transform3D(0.884956, 0, 0, 0, 0.884956, 0, 0, 0, 0.884956, 1.22743, 0.369027, -2.04425)
+
+[connection signal="pressed" from="Control/btn_start" to="Control" method="_on_btn_start_pressed"]

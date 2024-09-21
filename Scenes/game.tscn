@@ -49,7 +49,8 @@ shader_parameter/brightness_value = 0.01
 shader_parameter/saturation_value = 1.2
 shader_parameter/gamma_value = 0.9
 shader_parameter/vignette_position = Vector2(0.5, 0.5)
-shader_parameter/smoothness = 0.4
+shader_parameter/smoothness = 0.455
+shader_parameter/color_vignette = Vector3(0.6, 0.14, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snqdy"]
 
@@ -281,6 +282,7 @@ mesh = SubResource("SphereMesh_3x1hn")
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12.9, -35.6)
 visible = false
+light_color = Color(0, 0, 0, 1)
 light_energy = 0.395
 spot_range = 20.8
 spot_attenuation = 0.00176025

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dxxkp8ynemrxi" path="res://Scenes/flash.tscn" id="5_mcnnd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vgwi1"]
-size = Vector3(1, 1.34714, 1)
+size = Vector3(1, 1.5, 1)
 
 [node name="Standard" type="CharacterBody3D" groups=["mob"]]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -35,7 +35,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911784, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988214, 0)
 shape = SubResource("BoxShape3D_vgwi1")
 
 [node name="Decal" type="Decal" parent="."]

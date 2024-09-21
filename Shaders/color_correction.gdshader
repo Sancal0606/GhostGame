@@ -7,6 +7,7 @@ uniform float gamma_value = 1;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 uniform vec2 vignette_position = vec2(0.5, 0.5);
 uniform float smoothness = 0.5;
+uniform vec3 color_vignette;
 
 void fragment() {
 	vec3 source_col = texture(screen_texture, SCREEN_UV).rgb;
