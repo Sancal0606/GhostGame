@@ -14,7 +14,8 @@ const MONKEY_MAT = preload("res://Materials/monkey_mat.tres")
 @export var jumpTime = 0.5
 @export var jumpRange = 30
 
-
+var isJumping = false
+var jumpCountdown
 var target_velocity = Vector3.ZERO
 var dir
 var temp = 0
@@ -38,8 +39,14 @@ func _ready():
 	ghost = true
 	damageCount = damageCooldown
 	decal_size = max_decal_size
+	jumpCountdown = jumpTime * 2
 
 func _process(delta):
+	if jumpCountdown <= 0:
+		isJumping = false
+		jumpCountdown = jumpTime * 2
+	else:
+		jumpCountdown -= delta
 	damageCount -= delta
 	if velocity.y != 0:
 		decal_size -= velocity.y / abs(velocity.y) * 0.5
@@ -100,7 +107,8 @@ func _physics_process(delta):
 	check_collisions()
 	
 func jump():
-	
+	isJumping = true
+	jumpCountdown = jumpTime * 2
 	var tempVec = dir - position
 	tempVec.y = 0
 	var tempVecNor = tempVec.normalized()
@@ -129,6 +137,7 @@ func move(direction, delta):
 		target_velocity.z = direction.z * speed
 		
 func check_collisions():
+	print(str(isJumping)+"/" + str(is_on_floor()))
 	for index in range(get_slide_collision_count()):
 		var collision = get_slide_collision(index)
 		
@@ -137,7 +146,8 @@ func check_collisions():
 		
 		if collision.get_collider().is_in_group("mob"):
 			var mob = collision.get_collider()
-			if Vector3.UP.dot(collision.get_normal()) > 0.1 and ghost:
+			
+			if isJumping and ghost:
 				position = Vector3(100,100,100)
 				mob.posses()
 				ghost = false
