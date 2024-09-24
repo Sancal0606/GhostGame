@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://do85o2k7imswv"]
+[gd_scene load_steps=28 format=3 uid="uid://do85o2k7imswv"]
 
 [ext_resource type="PackedScene" uid="uid://lxmjpl5w53r6" path="res://Scenes/player.tscn" id="1_et54k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_n6kb2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://drr4r31bemgp3" path="res://Models/wood_tile.tscn" id="10_hl8ek"]
 [ext_resource type="Theme" uid="uid://8kga12s2y8ep" path="res://theme_ui.tres" id="11_1yf23"]
 [ext_resource type="Texture2D" uid="uid://vxrggxy6d25b" path="res://Sprites/icon_life.png" id="11_u8txv"]
+[ext_resource type="Texture2D" uid="uid://bbm5lw480nocp" path="res://Sprites/ghost_icon.png" id="13_bre6v"]
 [ext_resource type="PackedScene" uid="uid://1mriu75os2x" path="res://Models/test_wall.tscn" id="17_qyfsj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2jwfj"]
@@ -316,9 +317,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -166.0
-offset_top = -121.0
+offset_top = -91.0
 offset_right = 118.0
-offset_bottom = -23.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("11_1yf23")
@@ -403,18 +404,18 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -196.0
-offset_top = 7.0
-offset_right = 828.0
-offset_bottom = 1031.0
+offset_left = -180.0
+offset_top = -9.0
+offset_right = 844.0
+offset_bottom = 1015.0
 grow_horizontal = 0
 scale = Vector2(0.164738, 0.164738)
 max_value = 1.0
 step = 0.01
 value = 1.0
 fill_mode = 5
-texture_under = ExtResource("11_u8txv")
-texture_progress = ExtResource("11_u8txv")
+texture_under = ExtResource("13_bre6v")
+texture_progress = ExtResource("13_bre6v")
 tint_under = Color(0, 0, 0, 0.686275)
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
@@ -928,8 +929,12 @@ shape = SubResource("BoxShape3D_drggf")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -59, 11.035, -2.57897e-06)
 shape = SubResource("BoxShape3D_drggf")
 
+[node name="Win_timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/btn_continue" to="." method="_on_btn_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/btn_pause_menu" to="." method="_on_btn_pause_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/btn_try" to="." method="_on_btn_try_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/btn_game_menu" to="." method="_on_btn_game_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Win/VBoxContainer/btn_menu" to="." method="_on_btn_menu_pressed"]
+[connection signal="timeout" from="Win_timer" to="." method="_on_win_timer_timeout"]

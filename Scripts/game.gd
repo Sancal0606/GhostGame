@@ -37,7 +37,7 @@ func _ready():
 func prepare_round():
 	waiting_round = true
 	if rounds.size() <= 0:
-		Win()
+		$Win_timer.start()
 		return
 	var current_round = rounds[0].instantiate()
 	add_child(current_round)
@@ -46,13 +46,6 @@ func prepare_round():
 	$CanvasLayer/Game/wave/wave_txt.text = str(round_index)
 	round_index+=1
 	
-func Win():
-	Engine.time_scale = 0
-	ui_Pause.hide()
-	ui_Game.hide()
-	ui_Win.show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	game_win = true
 
 func _process(delta):
 	if Input.is_action_just_pressed("Pause") and !game_win:
@@ -155,3 +148,12 @@ func _on_btn_game_menu_pressed():
 
 func _on_btn_menu_pressed():
 	get_tree().change_scene_to_packed(simultaneous_scene)
+
+
+func _on_win_timer_timeout():
+	Engine.time_scale = 0
+	ui_Pause.hide()
+	ui_Game.hide()
+	ui_Win.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	game_win = true
