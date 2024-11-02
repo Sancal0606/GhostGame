@@ -9,6 +9,7 @@ func _initialize(_dir):
 	direction = _dir
 
 func _physics_process(delta):
+	print(priority * speed)
 	if direction:
 		position += direction * speed * delta * 10
 	

@@ -137,7 +137,6 @@ func move(direction, delta):
 		target_velocity.z = direction.z * speed
 		
 func check_collisions():
-	print(str(isJumping)+"/" + str(is_on_floor()))
 	for index in range(get_slide_collision_count()):
 		var collision = get_slide_collision(index)
 		

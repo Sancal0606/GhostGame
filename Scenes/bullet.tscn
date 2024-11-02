@@ -20,6 +20,7 @@ height = 0.5
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 collision_mask = 5
 script = ExtResource("1_38gpi")
+speed = 3
 hit = ExtResource("2_nxfay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

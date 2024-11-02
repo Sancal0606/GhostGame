@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhjittrk345ee"]
+
+[ext_resource type="Script" path="res://Scripts/enemy1.gd" id="1_cwvgp"]
+[ext_resource type="PackedScene" uid="uid://cmse4u4a1rwsk" path="res://Scenes/enemy1_possesed.tscn" id="2_p1uco"]
+[ext_resource type="PackedScene" uid="uid://betu6w6h8ifru" path="res://Scenes/bullet.tscn" id="3_s1yyf"]
+[ext_resource type="PackedScene" uid="uid://dxxkp8ynemrxi" path="res://Scenes/flash.tscn" id="4_tsm2o"]
+[ext_resource type="PackedScene" uid="uid://ykxc7wxu47sc" path="res://Models/test_soldier.tscn" id="5_s2bdp"]
+[ext_resource type="Texture2D" uid="uid://ds6gt02kyarks" path="res://Assets/White_Circle.svg.png" id="6_pbf2s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vgwi1"]
+size = Vector3(1, 1.5, 1)
+
+[node name="Standard" type="CharacterBody3D" groups=["mob"]]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_cwvgp")
+posseses_enemy = ExtResource("2_p1uco")
+bullet = ExtResource("3_s1yyf")
+flash = ExtResource("4_tsm2o")
+minTimeShoot = 2.0
+maxTimeShoot = 5.0
+damage_force = 20
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Pivot" instance=ExtResource("5_s2bdp")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0359024, 0, 0.0462065)
+
+[node name="BulletPoint" type="Node3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136243, 1.27142, 1.22267)
+
+[node name="Timer" type="Timer" parent="Pivot/BulletPoint"]
+wait_time = 2.0
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988214, 0)
+shape = SubResource("BoxShape3D_vgwi1")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00383072, 0.208869, -0.00303593)
+size = Vector3(1, 0.493, 1)
+texture_albedo = ExtResource("6_pbf2s")
+modulate = Color(0, 0, 0, 1)
+
+[node name="Damage_Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Damage_Color_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Pivot/BulletPoint/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Damage_Timer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Damage_Color_Timer" to="." method="_on_damage_color_timer_timeout"]

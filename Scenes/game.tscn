@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://do85o2k7imswv"]
+[gd_scene load_steps=29 format=3 uid="uid://do85o2k7imswv"]
 
 [ext_resource type="PackedScene" uid="uid://lxmjpl5w53r6" path="res://Scenes/player.tscn" id="1_et54k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_n6kb2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://8kga12s2y8ep" path="res://theme_ui.tres" id="11_1yf23"]
 [ext_resource type="Texture2D" uid="uid://vxrggxy6d25b" path="res://Sprites/icon_life.png" id="11_u8txv"]
 [ext_resource type="Texture2D" uid="uid://bbm5lw480nocp" path="res://Sprites/ghost_icon.png" id="13_bre6v"]
+[ext_resource type="PackedScene" uid="uid://vv6kfesuiruu" path="res://NewModels/barrel.glb" id="16_ysivo"]
 [ext_resource type="PackedScene" uid="uid://1mriu75os2x" path="res://Models/test_wall.tscn" id="17_qyfsj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2jwfj"]
@@ -266,7 +267,7 @@ light_energy = 1.105
 transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.567844, 0.823136, 0, -0.823136, 0.567844, 0, 116.011, 80.973)
+transform = Transform3D(1, 0, 0, 0, 0.567844, 0.823136, 0, -0.823136, 0.567844, 0, 89.6706, 62.802)
 environment = SubResource("Environment_k7rs0")
 fov = 45.0
 size = 100.0
@@ -759,7 +760,6 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 48, -2, 48)
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -2, 48)
 
 [node name="Lights" type="Node3D" parent="."]
-visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.1512, -49)
@@ -823,6 +823,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 [node name="Gfx" type="Node3D" parent="Walls"]
 
 [node name="test_wall" parent="Walls/Gfx" instance=ExtResource("17_qyfsj")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, -58)
+
+[node name="test_wall30" parent="Walls/Gfx" instance=ExtResource("17_qyfsj")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, -58)
 
 [node name="test_wall2" parent="Walls/Gfx" instance=ExtResource("17_qyfsj")]
@@ -931,6 +934,9 @@ shape = SubResource("BoxShape3D_drggf")
 
 [node name="Win_timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="barrel" parent="." instance=ExtResource("16_ysivo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1553, 4.63518, -6.00342)
 
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/btn_continue" to="." method="_on_btn_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/btn_pause_menu" to="." method="_on_btn_pause_menu_pressed"]
